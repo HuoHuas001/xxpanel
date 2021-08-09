@@ -15,6 +15,7 @@ def load_img(file):
     return pygame.image.load(file)
 
 icon = load_img('Images/panel_ico.ico')
+Desktop_BG = load_img('Images/Desktop_BG.jpg')
 #输出文本
 def loginfo(msg):
     print('['+datetimes+' INFO] '+msg)
@@ -26,6 +27,9 @@ def logerro(msg):
 #Debug模式
 Debug = False
 
+#状态
+state = 'DESKTOP'
+
 #监听事件
 def Listen_Event():
     for i in pygame.event.get():
@@ -33,11 +37,17 @@ def Listen_Event():
             pygame.quit()
             loginfo('Program exits normally')
             sys.exit()
+
+#渲染桌面背景
+def Paint_Desktop():
+    canvas.blit(Desktop_BG,(0,0))
 #保持窗口
 def KeepWindow():
     while True:
         Listen_Event()
         pygame.display.update()
+        if state == 'DESKTOP':
+            Paint_Desktop()
 
 #加载主函数
 def load_Program():
