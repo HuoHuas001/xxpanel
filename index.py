@@ -6,6 +6,9 @@ import sys
 import json
 import datetime
 
+#加载插件
+import Load
+
 #初始化pygame
 pygame.init()
 
@@ -16,6 +19,7 @@ def load_img(file):
 
 icon = load_img('Images/panel_ico.ico')
 Desktop_BG = load_img('Images/Desktop_BG.jpg')
+Desktop_Bar = load_img('Images/bar.png')
 #输出文本
 def loginfo(msg):
     print('['+datetimes+' INFO] '+msg)
@@ -40,7 +44,11 @@ def Listen_Event():
 
 #渲染桌面背景
 def Paint_Desktop():
+    #绘制桌面背景
     canvas.blit(Desktop_BG,(0,0))
+    #绘制任务栏
+    canvas.blit(Desktop_Bar,(0,0))
+
 #保持窗口
 def KeepWindow():
     while True:
